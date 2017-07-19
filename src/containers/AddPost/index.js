@@ -43,6 +43,7 @@ class AddPost extends Component {
         />
         <button 
           type="submit" 
+          className="pure-button"
           onClick={ this.handleSubmit }
         >
           Submit

@@ -34,30 +34,43 @@ class Posts extends Component {
     }
 
     return (
-      <div className="Posts">
-        { Object.keys(posts).map(function(key) {
-            return (
-              <div key={key}>
-                <div>Title: { posts[key].title }</div>
-                <div>Upvotes: { posts[key].upvote }</div>
-                <div>Downvotes: { posts[key].downvote }</div>
-                <div>
-                  <button 
-                    onClick={ _this.handleUpvote.bind(this, posts[key], key) }
-                    type="button"
-                  >
-                    Upvote
-                  </button>
-                  <button 
-                    onClick={ _this.handleDownvote.bind(this, posts[key], key) }
-                    type="button"
-                  >
-                    Downvote
-                  </button>
-                </div>
-              </div>
-            );
-        })}
+      <div>
+        <a href="/add-post" className="button button-outline">Add Post</a>
+        <div className="Posts">
+          { Object.keys(posts).map(function(key) {
+              return (
+                <section key={key} className='post clearfix'>
+
+                  <div className="voting-buttons float-left">
+                    <button 
+                      onClick={ _this.handleUpvote.bind(this, posts[key], key) }
+                      type="button"
+                      className="button"
+                    >
+                      
+                    </button>
+                    <button 
+                      onClick={ _this.handleDownvote.bind(this, posts[key], key) }
+                      type="button"
+                      className="button"
+                    >
+                      
+                    </button>
+                  </div>
+
+                  <header>
+                    <h2>Title: { posts[key].title }</h2>
+                  </header>
+
+                  <div>
+                    <span className="vote-count">Upvotes: { posts[key].upvote }</span>
+                    <span className="vote-count">Downvotes: { posts[key].downvote }</span>
+                  </div>
+                  
+                </section>
+              );
+          })}
+        </div>
       </div>
     );
   }
